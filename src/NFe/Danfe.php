@@ -396,7 +396,7 @@ class Danfe extends Common
     {
         $this->creditos = trim($message);
     }
-    
+
     /**
      * monta
      *
@@ -733,8 +733,8 @@ class Danfe extends Common
         $y = $this->pCabecalhoDANFE($x, $y, $pag, $totPag);
         //coloca os dados do destinatário
         $y = $this->pDestinatarioDANFE($x, $y+1);
-        
-        
+
+
         //Verifica as formas de pagamento da nota fiscal
         $formaPag = array();
         if (isset($this->detPag) && $this->detPag->length > 0) {
@@ -1907,7 +1907,7 @@ class Danfe extends Common
             return ($y-2);
         }
     } //fim da função pagamentoDANFE
-    
+
     /**
      * impostoDanfeHelper
      * Auxilia a montagem dos campos de impostos e totais da DANFE
@@ -2699,7 +2699,7 @@ class Danfe extends Common
                 // Tag somente é gerada para veiculo 0k, e só é permitido um veiculo por NF-e por conta do detran
                 // Verifica se a Tag existe
                 if (!empty($veicProd)) {
-                    $this->pDadosItenVeiculoDANFE($oldX, $y, $h, $prod);
+                    $this->pDadosItenVeiculoDANFE($oldX, $y, $nInicio, $h, $prod);
                 }
 
 
@@ -2728,7 +2728,7 @@ class Danfe extends Common
      * @param object $prod Contendo todos os dados do item
      */
 
-    protected function pDadosItenVeiculoDANFE($x, $y, $h, $prod)
+    protected function pDadosItenVeiculoDANFE($x, $y, &$nInicio, $h, $prod)
     {
         $oldX = $x;
         $oldY = $y;
@@ -3381,7 +3381,7 @@ class Danfe extends Common
         }
         return $saida;
     }
-    
+
     private function imagePNGtoJPG($original)
     {
         $image = imagecreatefrompng($original);
